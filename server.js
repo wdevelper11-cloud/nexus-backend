@@ -351,7 +351,10 @@ async function sendNotificationEmail(subject, data) {
 }
 
 // ─── START SERVER ───
-app.listen(PORT, () => {
+const PORT = process.env.PORT || 3000;
+const HOST = "0.0.0.0";
+
+app.listen(PORT, HOST, () => {
   console.log(`\n🚀 NexusCompute API running on port ${PORT}`);
   console.log(`   NexusFlow AI: ${process.env.ANTHROPIC_API_KEY ? '✅ Real Claude' : '⚡ Smart fallback (add ANTHROPIC_API_KEY to enable)'}`);
   console.log(`   Payments: ${process.env.RAZORPAY_KEY_ID ? '✅ Razorpay live' : '⏳ Add RAZORPAY_KEY_ID when ready'}`);
